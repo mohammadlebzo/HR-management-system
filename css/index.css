@@ -1,17 +1,60 @@
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  th{
-    font-weight: bold;
-  }
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
+:root{
+  --main-color: #dddddda8;
+  --span-color: blue;
+  --pending-color: rgb(156, 156, 0);
+  --process-color: rgb(0, 133, 0);
+}
+header{
+  padding: 20px;
+  position: relative;
+  background-color: var(--main-color);
+}
+header ul{
+  list-style: none;
+}
+header li{
+  display: inline;
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+footer{
+  width:100%;
+  height:3rem;
+  background-color: var(--main-color);
+}
+footer ul{
+  padding-top: 20px;
+}
+footer li{
+  display: inline;
+}
+form > *{
+  margin: 1rem;
+}
+.cardsContainer{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.card{
+  width: 80%;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--main-color);
+  border-radius: 15%;
+}
+.card img{
+  width: 100%;
+  border-radius: 50%;
+}
+.card p{
+  font-weight: 700;
+}
+#git{
+  float: right;
+  padding-right: 30px;
+}
+#CR{
+  padding-left: 30px;
+}
+
