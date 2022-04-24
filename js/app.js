@@ -41,10 +41,9 @@ Employee.prototype.Salary = function() {
 Employee.prototype.render = function() {
     let trEl = document.createElement('tr');
     trEl.innerHTML = `
-    <td>${this.Employee_ID}</td>
+    
     <td>${this.FullName}</td>
-    <td>${this.Department}</td>
-    <td>${this.Level}</td>
+    
     <td>${this.Salary()}</td>
     `;
     tableJS.appendChild(trEl);
@@ -63,7 +62,7 @@ let emp7 = new Employee(1006, 'Hadi Ahmad', 'Finance', 'Mid-Senior');
 
 // Creating the titles for each column:::::
 const createTable = () => {
-    let titles = ['Employee ID', 'Full Name', 'Department', 'Level', 'Salary'];
+    let titles = ['Full Name', 'Salary'];
     tableJS.className = 'table_js';
     let title_tr = document.createElement('tr');
     for (let i = 0; i < titles.length; i++) {
