@@ -77,7 +77,7 @@ const renderTableData = arr => {
 }
 
 const addDataToTable = arr => {
-    // FullName, Department, Level, Image_URL
+    /// FullName, Department, Level, Image_URL
     for(let tableElement of departmentsObjs_Arr){
         for(let cardElement of arr){
             if (tableElement.department === cardElement.Department) {
