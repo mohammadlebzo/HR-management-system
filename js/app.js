@@ -1,7 +1,7 @@
 'use strict';
 
 // Variables:::::
-let idStart = 1000
+let idStart = 1000;
 let employees_Arr = [];
 let DepOptionsArr = ['Administration', 'Marketing', 'Development', 'Finance'];
 let levelOptionsArr = ['Junior', 'Mid-Senior', 'Senior'];
@@ -9,6 +9,22 @@ let root = document.getElementById('rootDiv');
 // let tableJS = document.createElement('table');
 let cardsContainerDiv = document.createElement('div');
 let formJS = document.createElement('form');
+
+const saveData = data => {
+    let stringObj = JSON.stringify(data);
+    localStorage.setItem('employees', stringObj);
+}
+
+const getData = () => {
+    let savedData = localStorage.getItem('employees');
+    if (savedData) {
+        employees_Arr = [];
+        let tempArray = JSON.parse(savedData);
+        for (let element of tempArray) {
+            let tempObj = new Employee(element.FullName, element.Department, element.Level, element.Image_URL);
+        }
+    }
+}
 
 // Constructor:::::
 function Employee(FullName, Department, Level, Image_URL) {
@@ -71,6 +87,7 @@ Employee.prototype.render = function () {
 
 
 // Objects:::::
+
 let emp1 = new Employee('Ghazi Samer', 'Administration', 'Senior', './assets/placeholder.jpg');
 let emp2 = new Employee('Lana Ali', 'Finance', 'Senior', './assets/placeholder.jpg');
 let emp3 = new Employee('Tamara Ayoub', 'Marketing', 'Senior', './assets/placeholder.jpg');
@@ -80,17 +97,6 @@ let emp6 = new Employee('Rana Saleh', 'Development', 'Junior', './assets/placeho
 let emp7 = new Employee('Hadi Ahmad', 'Finance', 'Mid-Senior', './assets/placeholder.jpg');
 
 
-// Creating the titles for each column:::::
-// const createCards = () => {
-//     for (let element of employees_Arr){
-//         let divEl = document.createElement('div');
-//         divEl.setAttribute('class', card);
-//         let imgEl = document.createElement('img');
-//         imgEl.setAttribute('src', );
-//     }
-
-//     root.appendChild(cardsContainerDiv);
-// }
 
 const createForm = () => {
     //Full Name
@@ -160,20 +166,20 @@ const addEmployee = (event) => {
     // console.log(event.target.fullName.value);
     let newEmployee = new Employee(fullNameE, departmentE, levelsE, imgE);
     newEmployee.render();
+    saveData(employees_Arr);
 }
 
 // The renderer of the page:::::
 const pageRendering = arr => {
-    for (let i = 0; i < arr.length; i++)
-        arr[i].render();
+    for (let element of arr)
+        element.render();
 }
 
 
 // Method calling:::::
 // createCards();
+// saveData(employees_Arr);
+getData();
 createForm();
 pageRendering(employees_Arr);
-
-
-
 
